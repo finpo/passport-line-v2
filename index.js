@@ -17,7 +17,7 @@ function Strategy(options, verify) {
   options.clientSecret = options.channelSecret
   options.authorizationURL = options.authorizationURL || endPoint.WEB_LOGIN
   options.tokenURL = options.tokenURL || endPoint.ACCESS_TOKEN
-  options.authorizationURL += `?state=${shortid.generate()}`
+  options.authorizationURL += `?state=${shortid.generate()}&scope=${options.scope || 'openid profile'}`
   OAuth2Strategy.call(this, options, verify)
   this.name = NAME
 
